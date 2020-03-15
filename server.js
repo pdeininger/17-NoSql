@@ -2,6 +2,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var morgan = require("morgan");
+var routes = require("./Routes/backend/api-routes");
 
 var PORT = process.env.PORT || 8080;
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-/*app.use(routes);*/
+app.use(routes);
 
 /*launching server & listening*/
 app.listen(PORT, function() {

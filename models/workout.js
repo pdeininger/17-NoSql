@@ -21,7 +21,7 @@ const WorkoutSchema = new Schema({
   totalDuration: Number
 });
 
-workoutSchema.methods.setTotalDuration = function() {
+WorkoutSchema.methods.setTotalDuration = function() {
   let total = 0;
   for (let i = 0; i < this.exercises.length; i++) {
     total += this.exercises[i].duration;
