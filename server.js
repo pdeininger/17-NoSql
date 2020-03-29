@@ -2,7 +2,8 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var morgan = require("morgan");
-var routes = require("./Routes/backend/api-routes");
+var serverRoutes = require("./Routes/backend/api-routes");
+var clientRoutes = require("./Routes/frontend/html routes");
 
 var PORT = process.env.PORT || 8080;
 
@@ -14,7 +15,14 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.use(routes);
+mongoose.connect("mongodb://localhost/workout", {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+});
+
+app.use(serverRoutes);
+app.use(clientRoutes);
 
 /*launching server & listening*/
 app.listen(PORT, function() {
