@@ -15,16 +15,16 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 app.use(serverRoutes);
 app.use(clientRoutes);
 
 /*launching server & listening*/
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("app is loaded: on local host:" + PORT);
 });
