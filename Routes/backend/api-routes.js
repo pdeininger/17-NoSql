@@ -23,7 +23,7 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 });
 
-router.get("/api/workouts", ({ body }, req, res) => {
+router.get("/api/workouts", ({ body }, res) => {
   db.Workout.find({})
     .sort({ day: 1 })
     .then((dbWorkout) => {
