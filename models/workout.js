@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const WorkoutSchema = new Schema({
   day: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   exercises: [
     {
@@ -15,13 +15,13 @@ const WorkoutSchema = new Schema({
       distance: Number,
       weight: Number,
       reps: Number,
-      sets: Number
-    }
+      sets: Number,
+    },
   ],
-  totalDuration: Number
+  totalDuration: Number,
 });
 
-WorkoutSchema.methods.setTotalDuration = function() {
+WorkoutSchema.methods.setTotalDuration = function () {
   let total = 0;
   for (let i = 0; i < this.exercises.length; i++) {
     total += this.exercises[i].duration;
