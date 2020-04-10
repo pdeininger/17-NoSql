@@ -37,7 +37,7 @@ router.get("/api/workouts", ({ body }, res) => {
 router.put("/api/workouts/:id", (req, res) => {
   console.log("PUT", req.body);
   db.Workout.update(
-    { id: req.params.id },
+    { _id: req.params.id },
     {
       $push: { exercises: req.body },
     }
